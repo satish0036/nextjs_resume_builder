@@ -1,4 +1,4 @@
-import { ResumeInfoContext } from '../context/ResumeInfoContext' 
+import { ResumeInfoContext } from '../context/ResumeInfoContext'
 import React, { useContext, useEffect } from 'react'
 import PersonalDetailPreview1 from './preview/preview1/PersonalDetailPreview1'
 import SummeryPreview1 from './preview/preview1/SummeryPreview1'
@@ -9,35 +9,36 @@ import SkillsPreview1 from './preview/preview1/SkillsPreview1'
 
 
 const ResumePreview1 = () => {
-  const {resumeInfo,setResumeInfo}=useContext(ResumeInfoContext)
-  
+  const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
+
 
   return (
     <div className=' '
-    style={{
-        borderColor:resumeInfo?.themeColor 
-    }}
-    
+      style={{
+        borderColor: resumeInfo?.themeColor
+      }}
     >
-      {/* personal <details></details> */}
+       <PersonalDetailPreview1 resumeInfo={resumeInfo} />
+      
+      {
+        resumeInfo?.summery&&<SummeryPreview1 resumeInfo={resumeInfo} />
+      }
+      
+      {
+        resumeInfo?.skills.length!==0&& <SkillsPreview1 resumeInfo={resumeInfo} />
+      }
+      {
+        resumeInfo?.Experience.length!==0 && <ExperiencePreview1 resumeInfo={resumeInfo} />
+      }
 
-      <PersonalDetailPreview1 resumeInfo={resumeInfo} />
-      {/* <summary></summary> */}
-
-      <SummeryPreview1 resumeInfo={resumeInfo} />
-
-         {/* skills */}
-         <SkillsPreview1 resumeInfo={resumeInfo} />
-
-      {/* experriance */}
-      <ExperiencePreview1 resumeInfo={resumeInfo} />
-      <ProjectPreview1 resumeInfo={resumeInfo} />
+      {
+        resumeInfo?.Project.length!==0 && <ProjectPreview1 resumeInfo={resumeInfo} />
+      }
+      {
+        resumeInfo?.education.length!==0 && <EducationalPreview1 resumeInfo={resumeInfo} />
+      }
 
       
-      {/* education */}
-      <EducationalPreview1 resumeInfo={resumeInfo} />
-
-   
     </div>
   )
 }

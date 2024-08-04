@@ -1,3 +1,4 @@
+import { DateFormatter } from '@/components/utility/dateFormatter'
 import React from 'react'
 
 function ProjectPreview({resumeInfo}) {
@@ -19,9 +20,12 @@ function ProjectPreview({resumeInfo}) {
                  style={{
                     color:resumeInfo?.themeColor
                 }}>{Project?.projectName}</h2>
-                <h2 className='text-xs flex justify-between'>{Project?.aboutProject}, 
-               
-                <span>{Project?.startDate} To {Project?.currentlyWorking?'Present':Project.endDate} </span>
+                <h2 className='text-xs flex justify-between'>{Project?.aboutProject},
+                {
+                        Project?.startDate&& <span> <DateFormatter startDate={Project?.startDate} endDate={Project?.endDate}/></span>
+                    } 
+               {/* <span> <DateFormatter startDate={Project?.startDate} endDate={Project?.endDate}/></span> */}
+                {/* <span>{Project?.startDate} To {Project?.currentlyWorking?'Present':Project.endDate} </span> */}
                 </h2>
                 {/* <p className='text-xs my-2'>
                     {Project.projectSummery}

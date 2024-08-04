@@ -1,11 +1,11 @@
 import { ResumeInfoContext } from '../context/ResumeInfoContext'
 import React, { useContext, useEffect } from 'react'
-import PersonalDetailPreview from './preview/PersonalDetailPreview'
-import SummeryPreview from './preview/SummeryPreview'
-import ExperiencePreview from './preview/ExperiencePreview'
-import EducationalPreview from './preview/EducationalPreview'
-import SkillsPreview from './preview/SkillsPreview'
-import ProjectPreview from './preview/ProjectPreview'
+import PersonalDetailPreview from './preview/preview0/PersonalDetailPreview'
+import SummeryPreview from './preview/preview0/SummeryPreview'
+import ExperiencePreview from './preview/preview0/ExperiencePreview'
+import EducationalPreview from './preview/preview0/EducationalPreview'
+import SkillsPreview from './preview/preview0/SkillsPreview'
+import ProjectPreview from './preview/preview0/ProjectPreview'
 
 const ResumePreview = () => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
@@ -19,20 +19,32 @@ const ResumePreview = () => {
       >
       {/* personal <details></details> */}
 
+     
+
+
+
+
+
       <PersonalDetailPreview resumeInfo={resumeInfo} />
-      {/* <summary></summary> */}
-      <SummeryPreview resumeInfo={resumeInfo} />
-
-      {/* experriance */}
-      <ExperiencePreview resumeInfo={resumeInfo} />
-      <ProjectPreview resumeInfo={resumeInfo} />
-
+     {
+        resumeInfo?.summery&&<SummeryPreview resumeInfo={resumeInfo} />
+      }
       
-      {/* education */}
-      <EducationalPreview resumeInfo={resumeInfo} />
+      
+      {
+        resumeInfo?.Experience.length!==0 && <ExperiencePreview resumeInfo={resumeInfo} />
+      }
 
-      {/* skills */}
-      <SkillsPreview resumeInfo={resumeInfo} />
+      {
+        resumeInfo?.Project.length!==0 && <ProjectPreview resumeInfo={resumeInfo} />
+      }
+      {
+        resumeInfo?.education.length!==0 && <EducationalPreview resumeInfo={resumeInfo} />
+      }
+      {
+        resumeInfo?.skills.length!==0&& <SkillsPreview resumeInfo={resumeInfo} />
+      }
+
     </div>
   )
 }

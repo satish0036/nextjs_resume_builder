@@ -1,3 +1,4 @@
+import { DateFormatter } from '@/components/utility/dateFormatter'
 import React from 'react'
 
 function EducationalPreview({resumeInfo}) {
@@ -20,7 +21,10 @@ function EducationalPreview({resumeInfo}) {
                 }}
             >{education.universityName}</h2>
             <h2 className='text-xs flex justify-between'>{education?.degree} in {education?.major}
-            <span>{education?.startDate} - {education?.endDate}</span>
+
+               <span> <DateFormatter startDate={education?.startDate} endDate={education?.endDate}/></span>
+
+            {/* <span>{education?.startDate} - {education?.endDate}</span> */}
             </h2>
             <p className='text-xs my-2'>
                 {education?.description}
